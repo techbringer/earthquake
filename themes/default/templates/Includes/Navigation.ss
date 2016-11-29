@@ -13,4 +13,5 @@
 			</li>
 		<% end_loop %>
 	</ul>
+	<% include Translator %>
 </nav>

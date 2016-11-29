@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html lang="$ContentLocale" dir="$i18nScriptDirection" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="$ContentLocale" dir="$i18nScriptDirection" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="$ContentLocale" dir="$i18nScriptDirection" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="$ContentLocale" dir="$i18nScriptDirection" class="no-js"> <!--<![endif]-->
 	<head>
 		<% base_tag %>
 		$MetaTags(true)
@@ -15,7 +15,7 @@
 
 		<% include GA %>
 	</head>
-	<body class="page-$URLSegment<% if $isMobile %> mobile<% end_if %> page-type-$BodyClass.LowerCase">
+	<body class="page-$URLSegment<% if $isMobile %> mobile<% end_if %> page-type-$BodyClass.LowerCase<% if $UseTemplate %> $UseTemplate.LowerCase<% end_if%>">
 		<% include Header %>
 
 		<main id="main">

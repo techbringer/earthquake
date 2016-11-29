@@ -1,14 +1,35 @@
 <?php
 use SaltedHerring\Utilities as Utilities;
-class Page extends SiteTree {
-
+use SaltedHerring\Debugger;
+class Page extends SiteTree
+{
 	private static $db = array(
+		'UseTemplate'		=>	'Varchar(255)'
 	);
 
 	private static $has_one = array(
 	);
+
+	public function getCMSFields() {
+		$fields = parent::getCMSFields();
+		$fields->addFieldToTab(
+			'Root.Main',
+			DropdownField::create(
+				'UseTemplate',
+				'Template',
+				TemplateChooser::get_templates()
+			)->setEmptyString('- default -')
+		);
+		return $fields;
+	}
+
 }
-class Page_Controller extends ContentController {
+
+class Page_Controller extends ContentController
+{
+	protected static $extensions = array(
+		'SiteJSControllerExtension'
+	);
 
 	/**
 	 * An array of actions that can be accessed via a request. Each array element should be an action name, and the
@@ -30,7 +51,7 @@ class Page_Controller extends ContentController {
 
 	public function init() {
 		parent::init();
-
+		$this->initJS();
 		// Note: you should use SS template require tags inside your templates
 		// instead of putting Requirements calls here.  However these are
 		// included so that our older themes still work
@@ -106,4 +127,14 @@ Requirements::themedCSS('reset');
 	public function getBodyClass() {
 		return Utilities::sanitiseClassName($this->singular_name(),'-');
 	}
+
+	public function index()
+	{
+		$request = $this->Request;
+		if (!empty($this->UseTemplate)) {
+			return $this->renderWith(array($this->UseTemplate, 'Page'));
+		}
+		return $this->renderWith('Page');
+	}
+
 }
