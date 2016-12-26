@@ -12,6 +12,10 @@
     margin-right: auto;
 }
 
+.hide {
+    display: none;
+}
+
 /**
  * Clearfix
  * */
@@ -129,10 +133,10 @@
 
 @include breakpoint($container) {
     .margin-top {
-        padding-top: rem($margin/2);
+        margin-top: rem($margin/2);
     }
     .margin-bottom {
-        padding-bottom: rem($margin/2);
+        margin-bottom: rem($margin/2);
     }
 }
 
@@ -225,4 +229,50 @@ $use-mozilla-ellipsis-binding: true;
 // By default, ellipsis text is no-wrap. Pass false as the first argument if you don't want that.
 .ellipsis {
     @include ellipsis;
+}
+
+
+.as-block {
+    display: block;
+}
+
+.as-inline-block {
+    display: inline-block;
+}
+
+.as-flex {
+    @include display-flex;
+    &.wrap {
+        @include flex-wrap(wrap);
+    }
+    &.nowrap {
+        @include flex-wrap(nowrap);
+    }
+
+    &.grid-centered,
+    &.horizontal-centered,
+    &.horizontal-centre,
+    &.horizontal-center,
+    &.horizontal-centred {
+        @include justify-content(center);
+    }
+
+    &.vertical-centered,
+    &.vertical-centre,
+    &.vertical-center,
+    &.vertical-centred {
+        @include align-items(center);
+    }
+
+    &.right-aligned {
+        @include justify-content(flex-end);
+    }
+
+    &.space-between {
+        @include justify-content(space-between);
+    }
+
+    &.space-around {
+        @include justify-content(space-around);
+    }
 }

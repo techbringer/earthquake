@@ -1,0 +1,20 @@
+.event {
+    .text {
+        padding-top: rem(50);
+        padding-bottom: rem(50);
+        @include breakpoint($normal-screen) {
+            padding-top: rem(30);
+            padding-bottom: rem(30);
+        }
+        .event-title {
+            margin-bottom: 0;
+            font-size: rem(24);
+            @include breakpoint($normal-screen) {
+                font-size: rem(18);
+            }
+            color: $font-darker;
+        }
+
+
+    }
+}

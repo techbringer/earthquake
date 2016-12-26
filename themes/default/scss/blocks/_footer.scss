@@ -1,0 +1,26 @@
+#footer {
+    padding: rem(40) 0 rem(60);
+    @include breakpoint($normal-screen) {
+        padding: rem(20) 0 rem(30);
+    }
+    .container {
+        a {
+            display: block;
+            font-size: rem(20);
+            margin: 0 rem(10) rem(10);
+            @include breakpoint($normal-screen) {
+                font-size: rem(16);
+            }
+
+            @include breakpoint($fablet) {
+                width: 100%;
+                margin: 0 0 rem(10);
+                text-align: center;
+            }
+            &.current {
+                color: $font-darker;
+                font-weight: bold;
+            }
+        }
+    }
+}

@@ -1,5 +1,4 @@
-<div class="container">
-    <h1>$Title</h1>
+<div class="container padding">
     $Form
     $Content
 </div>

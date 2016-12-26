@@ -15,6 +15,7 @@ require_once("conf/ConfigureFromEnv.php");
 ImagickBackend::set_default_quality(90);
 Image::set_backend("ImagickBackend");
 
+SS_Cache::set_cache_lifetime('Person', 31536000, 1000); //cache for a year
 
 Requirements::set_write_js_to_body(false);
 

@@ -3,32 +3,64 @@ use SaltedHerring\Utilities as Utilities;
 use SaltedHerring\Debugger;
 class Page extends SiteTree
 {
-	private static $db = array(
-		'UseTemplate'		=>	'Varchar(255)'
-	);
+	// private static $db = array(
+	// 	'UseTemplate'		=>	'Varchar(255)'
+	// );
+
+    private static $extensions = array(
+        'BlockinPage'
+    );
 
 	private static $has_one = array(
+        'RedirectTo'        =>  'Page'
 	);
 
-	public function getCMSFields() {
-		$fields = parent::getCMSFields();
-		$fields->addFieldToTab(
-			'Root.Main',
-			DropdownField::create(
-				'UseTemplate',
-				'Template',
-				TemplateChooser::get_templates()
-			)->setEmptyString('- default -')
-		);
-		return $fields;
-	}
+	// public function getCMSFields() {
+	// 	$fields = parent::getCMSFields();
+	// 	$fields->addFieldToTab(
+	// 		'Root.Main',
+	// 		DropdownField::create(
+	// 			'UseTemplate',
+	// 			'Template',
+	// 			TemplateChooser::get_templates()
+	// 		)->setEmptyString('- default -')
+	// 	);
+	// 	return $fields;
+	// }
+
+    /**
+     * CMS Fields
+     * @return FieldList
+     */
+    public function getCMSFields()
+    {
+        $fields = parent::getCMSFields();
+        if (!$fields->fieldByName('Options')) {
+			$fields->insertBefore(RightSidebar::create('Options'), 'Root');
+	    }
+        $fields->addFieldToTab(
+            'Options',
+            DropdownField::create(
+                'RedirectToID',
+                'Redirect to page',
+                Page::get()->sort(array('Title' => 'ASC'))->map('ID', 'Title')
+            )->setEmptyString('- no redirectoin -')
+        );
+
+        if (!empty($this->RedirectToID)) {
+            $fields->removeByName('Content');
+        }
+
+        return $fields;
+    }
 
 }
 
 class Page_Controller extends ContentController
 {
-	protected static $extensions = array(
-		'SiteJSControllerExtension'
+    protected static $extensions = array(
+		'SiteJSControllerExtension',
+        'PrintBlocks'
 	);
 
 	/**
@@ -46,11 +78,22 @@ class Page_Controller extends ContentController
 	 *
 	 * @var array
 	 */
-	private static $allowed_actions = array (
-	);
+	private static $allowed_actions = array ();
 
 	public function init() {
 		parent::init();
+
+        if (!empty($this->RedirectToID)) {
+            $target = SiteTree::get()->byID($this->RedirectToID);
+            if (!empty($target)) {
+                $to = $target->Link();
+                if (!empty($to)) {
+                    $this->redirect($to, 301);
+                }
+            }
+        }
+
+
 		$this->initJS();
 		// Note: you should use SS template require tags inside your templates
 		// instead of putting Requirements calls here.  However these are
@@ -128,13 +171,45 @@ Requirements::themedCSS('reset');
 		return Utilities::sanitiseClassName($this->singular_name(),'-');
 	}
 
-	public function index()
-	{
-		$request = $this->Request;
-		if (!empty($this->UseTemplate)) {
-			return $this->renderWith(array($this->UseTemplate, 'Page'));
-		}
-		return $this->renderWith('Page');
-	}
+	// public function index()
+	// {
+	// 	$request = $this->Request;
+	// 	if (!empty($this->UseTemplate)) {
+	// 		return $this->renderWith(array($this->UseTemplate, 'Page'));
+	// 	}
+	// 	return $this->renderWith('Page');
+	// }
+
+    public function getNameRect()
+    {
+        $request = $this->request;
+        if ($key = $request->getVar('id')) {
+            $person = Person::get()->byID($key);
+            return !empty($person) ? json_encode($person->getRect()) : null;
+        }
+
+        if ($key = $request->getVar('name')) {
+            $person = Person::get()->filter(array('Slag' => $key))->first();
+            return !empty($person) ? json_encode($person->getRect()) : null;
+        }
+
+
+        return null;
+    }
+
+    public function getGoogleAPI($api_name)
+    {
+        return Config::inst()->get('GoogleAPIs', $api_name);
+    }
+
+    public function getContentTop()
+    {
+        return $this->getMyBlocks()->filter(array('PagePosition' => 'before-content'));
+    }
+
+    public function getContentBottom()
+    {
+        return $this->getMyBlocks()->filter(array('PagePosition' => 'after-content'));
+    }
 
 }

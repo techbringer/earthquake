@@ -17,9 +17,13 @@ $margin: 16;
 /**
  * Responsive breakpoints
  * */
+$large-screen: min-width 1920px;
+$normal-screen: max-width 1919px;
+$narrow-screen: max-width 1355px;
 $container: max-width 1179px;
 $max-width-single-column: 640;
 $container_ipadTo960: 768px 959px;
+$fablet: max-width 479px;
 $container_largerPhones: 640px 767px;
 $container_small: 0 639px;
 

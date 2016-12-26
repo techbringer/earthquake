@@ -1,0 +1,58 @@
+a {
+    color: $font-dark;
+    @include transition(color 0.25s);
+    &:hover {
+        color: $font-darker;
+    }
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    color: $font-dark;
+}
+
+p, ul, li {
+    font-size: rem(20);
+    line-height: 1.6;
+    color: $font-dark;
+
+    @include breakpoint($normal-screen) {
+        font-size: rem(16);
+    }
+}
+
+p {
+    margin-top: 0;
+}
+
+#page-title {
+    font-size: rem(48);
+    @include breakpoint($normal-screen) {
+        font-size: rem(28);
+    }
+    .page-brochure &,
+    .page-the-earthquake-memorial &,
+    .page-home & {
+        display: none;
+    }
+}
+
+h2 {
+    font-size: rem(36);
+    @include breakpoint($normal-screen) {
+        font-size: rem(22);
+    }
+}
+
+h3 {
+    font-size: rem(32);
+    @include breakpoint($normal-screen) {
+        font-size: rem(18);
+    }
+}
+
+#map-wrapper {
+    @include breakpoint($fablet) {
+        padding: 0 rem(10);
+    }
+}

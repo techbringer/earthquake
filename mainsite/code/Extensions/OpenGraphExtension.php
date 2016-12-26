@@ -27,26 +27,28 @@ class OpenGraphExtension extends DataExtension {
 			$title = $title->performReadonlyTransformation();
 		}
 
-		$og = ToggleCompositeField::create(
-			'OG',
-			new LabelField('Open', 'Open Graph Tags'),
-			array(
-				new DropdownField('OGType', 'Type',
-					singleton($this->owner->ClassName)->dbObject('OGType')->enumValues()
-				),
-				$title,
-				new TextareaField('OGDescription', 'Description'),
-				$OGImage = SaltedUploader::create('OGImage', 'Image')->setCropperRatio(470/246)
-			)
-		);
+		if (empty($fields->fieldByName('Root.Social.OG'))) {
+			$og = ToggleCompositeField::create(
+				'OG',
+				new LabelField('Open', 'Open Graph Tags'),
+				array(
+					new DropdownField('OGType', 'Type',
+						singleton($this->owner->ClassName)->dbObject('OGType')->enumValues()
+					),
+					$title,
+					new TextareaField('OGDescription', 'Description'),
+					$OGImage = SaltedUploader::create('OGImage', 'Image')->setCropperRatio(470/246)
+				)
+			);
 
-		$fields->removeFieldsFromTab('Root.Main', array(
-			'OGTitle',
-			'OGTitle',
-			'OGDescription'
-		));
+			$fields->removeFieldsFromTab('Root.Main', array(
+				'OGTitle',
+				'OGTitle',
+				'OGDescription'
+			));
 
-		$OGImage->setDescription('Image must be at least 1200px x 630px.');
-		$fields->addFieldToTab('Root.Social', $og);
+			$OGImage->setDescription('Image must be at least 1200px x 630px.');
+			$fields->addFieldToTab('Root.Social', $og);
+		}
 	}
 }

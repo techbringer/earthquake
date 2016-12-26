@@ -26,12 +26,26 @@ Page_Controller:
 ModelAdmin:
   extensions:
     - ModelAdminExtension
-
+Block:
+  extensions:
+    - GenericBlockExtension
+  DisabledBlocks:
+    - Block
+    - DualColumnBlock
+    - TriColumnBlock
+DataList:
+  extensions:
+    - DataListExt
+MenuSet:
+  default_sets:
+    - "Footer"
 SeoConfig:
     Page: true
     ErrorPage: false
     RedirectorPage: false
     VirtualPage: false
+GoogleAPIs:
+  Map: AIzaSyCja9gWSRzZ_XOmMaNLGjpGfpUGlwHXe48
 i18n:
   all_locales:
     zh_Hans: Chinese (Simplified)

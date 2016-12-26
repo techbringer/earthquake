@@ -1,0 +1,15 @@
+.page-other-earthquake-sites {
+    #main {
+        .container {
+            p a {
+                color: $font-darker;
+                text-decoration: none;;
+                border-bottom: 1px solid $font-dark;
+                &:hover {
+                    color: $font-dark;
+                    border-bottom: 1px solid $font-dark;
+                }
+            }
+        }
+    }
+}

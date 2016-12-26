@@ -1,0 +1,11 @@
+.page-type-events-list-page {
+    .events {
+        .event {
+            &:nth-child(odd) {
+                .text {
+                    background-color: $bg-grey;
+                }
+            }
+        }
+    }
+}

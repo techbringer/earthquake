@@ -1,0 +1,27 @@
+#header {
+    padding: rem(35) 0;
+    @include breakpoint($normal-screen) {
+        padding: rem(20) 0;
+    }
+    @include breakpoint($fablet) {
+        padding: rem(10) 0;
+    }
+    position: relative;
+    z-index: 2;
+    #logo {
+        display: block;
+        text-transform: uppercase;
+        font-weight: normal;
+        font-size: rem(48);
+        line-height: 1.4;
+        margin-bottom: rem(20);
+        @include breakpoint($normal-screen) {
+            font-size: rem(28);
+            margin-bottom: rem(10);
+        }
+
+        @include breakpoint($fablet) {
+            font-size: rem(22);
+        }
+    }
+}

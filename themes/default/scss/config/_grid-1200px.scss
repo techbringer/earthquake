@@ -25,16 +25,9 @@ $susy: (
         	right: gutter()
     	}
 	}
-	
-	&.as-flex {
-		@include display-flex;
-    	@include flex-direction(row);
-		@include flex-wrap(wrap);
-
-		&.grid-centered {
-			justify-content: center;
-		}
-	}
+    @include breakpoint($normal-screen) {
+        max-width: rem(720);
+    }
 }
 
 .row {
@@ -52,14 +45,6 @@ $susy: (
 	}
 
 	width: 100%;
-	&.as-flex {
-		@include display-flex;
-    	@include flex-direction(row);
-		@include flex-wrap(wrap);
-		&.grid-centered {
-			justify-content: center;
-		}
-	}
 }
 
 .grid {

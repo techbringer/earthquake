@@ -12,6 +12,18 @@
 					normal);
 */
 
+@include font-face(
+            'fontello',
+            font-files(
+                'fontello.woff',
+                'fontello.woff2',
+                'fontello.ttf',
+                'fontello.svg'
+            ),
+            'fontello.eot',
+            normal,
+            normal
+        );
 
 /**
  * Example font import:
@@ -25,7 +37,7 @@
 /**
  * The default font stack.
  * */
-$default_font_family: Helvetica, Arial, sans-serif;
+$default_font_family: 'Lato', sans-serif;
 
 
 /**
@@ -34,6 +46,8 @@ $default_font_family: Helvetica, Arial, sans-serif;
  * */
 $icons: (
 	//dashboard:		'\e800',
+    down-open-mini:     '\e800',
+    menu:               '\f0c9'
 );
 
 @mixin icon($icon: dashboard, $font-size: rem(14), $position: before, $hide-font: true) {

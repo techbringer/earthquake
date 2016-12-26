@@ -1,0 +1,171 @@
+.block {
+    .block-title {
+        margin-top: 0;
+        font-size: rem(48);
+        @include breakpoint($normal-screen) {
+            font-size: rem(22);
+        }
+        font-weight: normal;
+        color: $font-darker;
+    }
+
+    .block-content {
+
+        h3 {
+            font-size: rem(24);
+            @include breakpoint($normal-screen) {
+                font-size: rem(18);
+            }
+            color: $font-darker;
+        }
+
+        @include breakpoint($normal-screen) {
+            font-size: rem(16);
+            p, li {
+                font-size: rem(16);
+            }
+        }
+
+        p {
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    &.bg-grey {
+        background-color: $bg-grey;
+    }
+
+    &.padding-top {
+        padding-top: rem(50);
+        @include breakpoint($normal-screen) {
+            padding-top: rem(30);
+        }
+    }
+
+    &.padding-bottom {
+        padding-bottom: rem(50);
+        @include breakpoint($normal-screen) {
+            padding-bottom: rem(30);
+        }
+    }
+
+    &.margin-top {
+        margin-top: rem(50);
+        @include breakpoint($normal-screen) {
+            margin-top: rem(30);
+        }
+    }
+
+    &.margin-bottom {
+        margin-bottom: rem(50);
+        @include breakpoint($normal-screen) {
+            margin-bottom: rem(30);
+        }
+    }
+
+    &.block-image-text-block {
+
+        .block-title {
+            font-size: rem(24);
+            font-weight: bold;
+        }
+
+        .block-content {
+            font-size: rem(22);
+            p, li {
+                font-size: rem(22);
+                line-height: 1.6;
+            }
+
+            @include breakpoint($normal-screen) {
+                font-size: rem(16);
+                p, li {
+                    font-size: rem(16);
+                }
+            }
+
+        }
+
+        .text,
+        .image {
+            width: 50%;
+            @include order(2);
+            @include breakpoint($fablet) {
+                width: 100%;
+            }
+        }
+
+        .image {
+            background-size: cover;
+            background-position: center center;
+            @include breakpoint($fablet) {
+                min-height: 40vh;
+            }
+            position: relative;
+            #brochure-cover {
+                position: absolute;
+                width: 60%;
+                left: 50%;
+                top: rem(220);
+                min-width: rem(320);
+                @include transform(translate(-50%, -70%));
+                @include breakpoint($fablet) {
+                    @include transform(translate(-50%, -90%));
+                }
+                img {
+                    max-width: 100%;
+                    height: auto;
+                }
+            }
+        }
+
+        .text {
+            padding: rem(50) 20% rem(60) rem(60);
+            @include breakpoint($narrow-screen) {
+                padding-right: rem(60);
+            }
+
+            @include breakpoint($fablet) {
+                padding: rem(20) rem(10);
+            }
+        }
+
+        &.image-right {
+            .text {
+                padding: rem(50) rem(60) rem(60) 20%;
+                @include breakpoint($narrow-screen) {
+                    padding-left: rem(60);
+                }
+
+                @include breakpoint($fablet) {
+                    padding: rem(20) rem(10);
+                }
+            }
+        }
+
+        &.image-left {
+            .image {
+                @include order(1);
+            }
+        }
+    }
+
+    &.block-single-column-block {
+        .block-title {
+            color: $font-darker;
+        }
+    }
+
+    &.block-parallaxing-block {
+        background-size: cover;
+        background-position: center center;
+
+        &.parallax-window {
+            .not-mobile & {
+                background-image: none !important;
+            }
+        }
+    }
+}

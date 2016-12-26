@@ -1,0 +1,123 @@
+.page-type-name-finder-page {
+
+    .desc {
+        padding: 0 rem(10);
+        p {
+            margin-bottom: 0;
+        }
+    }
+
+    .name-searcher {
+        position: relative;
+        max-width: rem(260);
+        @include breakpoint($narrow-screen) {
+            padding-right: rem(10);
+        }
+        @include breakpoint($fablet) {
+            max-width: rem(500);
+            padding-right: rem(0);
+        }
+        width: 100%;
+        #name-searcher {
+            padding: 0.5em 1em;
+            font-size: rem(16);
+            width: 100%;
+        }
+
+        #found-names {
+            width: 100%;
+            position: absolute;
+            top: rem(40);
+            @include transition(all 0.25s);
+            visibility: hidden;
+            opacity: 0;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            box-shadow: 0px 2px 30px -5px $font-dark;
+            li {
+                list-style: none;
+                padding: rem(5) rem(10);
+                font-size: rem(16);
+                a {
+                    display: block;
+                }
+            }
+        }
+
+        #name-searcher:focus + #found-names {
+            visibility: visible;;
+            opacity: 1;
+        }
+    }
+
+    #the-street {
+        position: relative;
+        z-index: 1;
+        &:before,
+        &:after {
+            position: absolute;
+            top: rem(45);
+            font-size: rem(14);
+            font-style: italic;
+            color: $font-dark;
+        }
+
+        &:before {
+            left: 0;
+            content: 'East end of wall';
+        }
+
+        &:after {
+            right: 0;
+            content: 'West end of wall';
+        }
+
+        @include breakpoint($normal-screen) {
+            margin-bottom: rem(32);
+        }
+    }
+
+    .as-flex.right-aligned.vertical-centred.margin-bottom {
+        position: relative;
+        z-index: 2;
+        @include breakpoint($fablet) {
+            @include flex-wrap(wrap);
+            @include justify-content(center);
+        }
+    }
+
+    #main {
+        .container {
+            @include breakpoint($normal-screen) {
+                max-width: rem(1200);
+                &#page-title {
+                    max-width: rem(720);
+                }
+            }
+
+            @include breakpoint($fablet) {
+                padding: 0 rem(10);
+            }
+        }
+    }
+
+    .desc,
+    .name-searcher {
+        @include breakpoint($fablet) {
+            width: 100%;
+        }
+    }
+
+    .desc {
+        padding: 0 rem(10);
+        @include breakpoint($fablet) {
+            margin-bottom: rem(10);
+            padding: 0;
+        }
+        p {
+            line-height: 1.4;
+            font-size: rem(18);
+        }
+    }
+}

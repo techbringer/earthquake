@@ -37,7 +37,12 @@
 /**
  * Blocks.
  * */
-
+@import 'blocks/block',
+        'blocks/header',
+        'blocks/main',
+        'blocks/event',
+        'blocks/footer',
+        'blocks/navigation';
 /**
  * Plugins.
  * */
@@ -45,7 +50,10 @@
 /**
  * Pages.
  * */
-
+@import 'pages/generic-page',
+        'pages/event-page',
+        'pages/links-page',
+        'pages/name-finder-page';
 /**
  * Element overrides.
  * */

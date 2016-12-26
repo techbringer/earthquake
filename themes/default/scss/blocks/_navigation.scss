@@ -1,0 +1,214 @@
+#main_nav {
+    @include transition(box-shadow 0.25s);
+    box-shadow: 0 1px 2px rgba(0,0,0,0);
+    position: relative;
+    #m-menu {
+        display: none;
+        border: none;
+        background: none;
+        outline: none;
+        padding: 0 rem(6);
+        &:before {
+            display: block;
+        }
+        @include breakpoint($fablet) {
+            display: block;
+            position: absolute;
+            top: rem(16);
+            right: 0;
+        }
+    }
+    .main-nav {
+        padding: 0;
+        margin: 0;
+        @include breakpoint($fablet) {
+            @include flex-wrap(wrap);
+            padding-right: rem(24);
+            &.open {
+                li {
+                    height: auto;
+                }
+            }
+        }
+        li {
+            position: relative;
+            font-size: rem(20);
+            @include breakpoint($normal-screen) {
+                font-size: rem(16);
+            }
+
+            @include breakpoint($fablet) {
+                width: 100%;
+                overflow: hidden;
+                margin: 0;
+                height: 0;
+                ul.children {
+                    height: 0;
+                    padding: 0;
+                    overflow: hidden;
+                    box-shadow: none;
+                }
+
+                &:hover {
+                    ul.children {
+                        height: auto;
+                        padding: rem(10) 0;
+                    }
+                }
+
+                &.current {
+                    height: auto;
+                    ul.children,
+                    li {
+                        height: auto;
+                    }
+
+                    ul.children {
+                        padding: rem(10) 0;
+                    }
+                }
+            }
+            list-style: none;
+            margin: 0 rem(10);
+            &:first-child {
+                margin-left: 0;
+            }
+
+            &:last-child {
+                margin-right: 0;
+            }
+
+            a {
+                padding: rem(20) 0;
+                @include breakpoint($normal-screen) {
+                    padding: rem(10) 0;
+                }
+                display: block;
+                &.current {
+                    font-weight: bold;
+                    color: $font-darker;
+                }
+
+                span.icon-down-open-mini {
+                    position: relative;
+                    margin-left: rem(8);
+                    width: rem(14);
+                    display: inline-block;
+                    &:before {
+                        font-size: rem(20);
+                        display: block;
+                    }
+
+                    &:after {
+                        content: '';
+                        display: inline-block;
+                        border: 1px solid #65656a;
+                        width: 14px;
+                        height: 14px;
+                        position: absolute;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        top: 50%;
+
+                    }
+                }
+            }
+
+            .children {
+                position: absolute;
+                @include breakpoint($fablet) {
+                    position: static;
+                    visibility: visible;
+                    opacity: 1;
+                }
+                padding: rem(10) 0;
+                min-width: 100%;
+                background-color: #fff;
+                visibility: hidden;
+                opacity: 0;
+                box-shadow: 0px 2px 30px -5px $font-dark;
+                @include transition(all 0.25s);
+                @include transition-delay(0.25s);
+                li {
+                    border: none;
+                    padding: 0;
+                    margin: 0 0 rem(10);
+                    &:last-child {
+                        margin: 0;
+                    }
+                    a {
+                        font-size: rem(18);
+                        @include breakpoint($normal-screen) {
+                            font-size: rem(16);
+                        }
+                        border-bottom: none;
+                        white-space: nowrap;
+                        padding: 0 rem(20) 0 rem(10);
+                    }
+                }
+            }
+
+            &:hover {
+                a {
+
+                }
+                .children {
+                    visibility: visible;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+#main_nav-sticky-wrapper {
+    @include breakpoint($fablet) {
+
+        li {
+            .children li {
+                display: none;
+                &.current {
+                    display: block;
+                }
+            }
+        }
+
+        .main-nav.open {
+            li {
+                display: block;
+            }
+        }
+    }
+
+    &.is-sticky {
+        #main_nav {
+            z-index: 999;
+            background-color: #fff;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            
+            width: 100% !important;
+            left: 0;
+            .main-nav {
+                width: 100%;
+                margin: 0 auto;
+                max-width: rem(1200);
+                @include breakpoint($normal-screen) {
+                    max-width: rem(720);
+                }
+                padding: 0 rem(10);
+                @include breakpoint($fablet) {
+                    padding-right: rem(24);
+                }
+                li {
+                    .children {
+                        margin-top: rem(2);
+                        box-shadow: 0px 8px 30px -5px $font-dark;
+                        @include breakpoint($fablet) {
+                            box-shadow: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
