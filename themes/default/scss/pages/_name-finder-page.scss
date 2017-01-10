@@ -19,6 +19,7 @@
         }
         width: 100%;
         #name-searcher {
+            font-family: arial, sans-serif;
             padding: 0.5em 1em;
             font-size: rem(16);
             width: 100%;
@@ -36,6 +37,9 @@
             background-color: #fff;
             box-shadow: 0px 2px 30px -5px $font-dark;
             li {
+                .non-english {
+                    font-family: arial, sans-serif;
+                }
                 list-style: none;
                 padding: rem(5) rem(10);
                 font-size: rem(16);

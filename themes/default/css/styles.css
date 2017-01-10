@@ -1846,6 +1846,7 @@ h3 {
   }
 }
 .page-type-name-finder-page .name-searcher #name-searcher {
+  font-family: arial, sans-serif;
   padding: 0.5em 1em;
   font-size: 1rem;
   width: 100%;
@@ -1869,6 +1870,9 @@ h3 {
   list-style: none;
   padding: 0.3125rem 0.625rem;
   font-size: 1rem;
+}
+.page-type-name-finder-page .name-searcher #found-names li .non-english {
+  font-family: arial, sans-serif;
 }
 .page-type-name-finder-page .name-searcher #found-names li a {
   display: block;
