@@ -1871,6 +1871,9 @@ h3 {
   padding: 0.3125rem 0.625rem;
   font-size: 1rem;
 }
+.page-type-name-finder-page .name-searcher #found-names li .force-lower {
+  text-transform: lowercase;
+}
 .page-type-name-finder-page .name-searcher #found-names li .non-english {
   font-family: arial, sans-serif;
 }

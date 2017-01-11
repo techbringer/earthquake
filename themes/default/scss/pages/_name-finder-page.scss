@@ -37,6 +37,10 @@
             background-color: #fff;
             box-shadow: 0px 2px 30px -5px $font-dark;
             li {
+                .force-lower {
+                    text-transform: lowercase;
+                }
+
                 .non-english {
                     font-family: arial, sans-serif;
                 }

@@ -30,7 +30,8 @@ class Person extends DataObject
 
     public function Title()
     {
-        return $this->English . (!empty($this->EthnicScript) ? (' <span class="non-english">' . $this->EthnicScript . '</span>'): '');
+        $english = str_replace('née', '<span class="force-lower">née</span>', $this->English);
+        return $english . (!empty($this->EthnicScript) ? (' <span class="non-english">' . $this->EthnicScript . '</span>'): '');
     }
 
     public function getTitle()
