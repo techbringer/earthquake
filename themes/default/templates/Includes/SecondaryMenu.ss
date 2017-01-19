@@ -1,4 +1,4 @@
-<% if $Menu(2) %>
+<% if $Menu(2) && $Menu(2).Count > 1 %>
     <ul class="container secondary-menu as-flex">
     <% loop Menu(2) %>
         <li class="<% if LinkOrCurrent = current %>current<% end_if %>"><a href="$Link" class="<% if LinkOrCurrent = current %>current<% end_if %>">$MenuTitle.XML</a></li>

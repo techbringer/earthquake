@@ -16,7 +16,7 @@
 
 		<% include GA %>
 	</head>
-	<body class="page-$URLSegment<% if $isMobile %> mobile<% end_if %> page-type-$BodyClass.LowerCase<% if $Menu(2) %> has-secondary-menu<% end_if %>">
+	<body class="page-$URLSegment<% if $isMobile %> mobile<% end_if %> page-type-$BodyClass.LowerCase<% if $Menu(2) && $Menu(2).Count > 1 %> has-secondary-menu<% end_if %>">
 		<% include Header %>
 
 		<main id="main">
