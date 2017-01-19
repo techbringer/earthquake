@@ -1,10 +1,10 @@
 #footer {
-    display: none;
     padding: rem(40) 0 rem(60);
     @include breakpoint($normal-screen) {
         padding: rem(20) 0 rem(30);
     }
     .container {
+        display: none;
         a {
             display: block;
             font-size: rem(20);
