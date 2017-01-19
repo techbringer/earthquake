@@ -147,6 +147,10 @@
         }
         outline: none;
         @include transition(all 0.5s);
+        @include breakpoint($container_ipadTo960) {
+            display: none;
+        }
+
         @include breakpoint($fablet) {
             display: none;
         }

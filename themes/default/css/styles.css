@@ -2142,6 +2142,11 @@ h3 {
     bottom: 1.5rem;
   }
 }
+@media (min-width: 768px) and (max-width: 959px) {
+  .page-type-name-finder-page button.arrow-button {
+    display: none;
+  }
+}
 @media (max-width: 479px) {
   .page-type-name-finder-page button.arrow-button {
     display: none;
