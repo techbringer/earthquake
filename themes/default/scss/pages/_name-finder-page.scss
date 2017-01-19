@@ -99,6 +99,9 @@
         .container {
             @include breakpoint($normal-screen) {
                 max-width: rem(1200);
+                &.secondary-menu {
+                    max-width: rem(720);
+                }
                 &#page-title {
                     max-width: rem(720);
                 }
@@ -126,6 +129,35 @@
         p {
             line-height: 1.4;
             font-size: rem(18);
+        }
+    }
+
+    button.arrow-button {
+        background: none;
+        border: none;
+        border-radius: 0;
+        padding: 0;
+        font-size: rem(72);
+        line-height: 1;
+        color: #65656a;
+        position: absolute;
+        bottom: rem(24);
+        outline: none;
+        @include transition(all 0.5s);
+        @include breakpoint($fablet) {
+            display: none;
+        }
+        &#btn-click-to-left {
+            left: rem(-30);
+            &:hover {
+                left: rem(-35);
+            }
+        }
+        &#btn-click-to-right {
+            right: rem(-30);
+            &:hover {
+                right: rem(-35);
+            }
         }
     }
 }

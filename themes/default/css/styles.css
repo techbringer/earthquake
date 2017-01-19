@@ -556,6 +556,10 @@
   *zoom: 1;
 }
 
+.relative {
+  position: relative;
+}
+
 /**
  * Floats
  * */
@@ -2084,6 +2088,9 @@ h3 {
   .page-type-name-finder-page #main .container {
     max-width: 75rem;
   }
+  .page-type-name-finder-page #main .container.secondary-menu {
+    max-width: 45rem;
+  }
   .page-type-name-finder-page #main .container#page-title {
     max-width: 45rem;
   }
@@ -2111,6 +2118,39 @@ h3 {
 .page-type-name-finder-page .desc p {
   line-height: 1.4;
   font-size: 1.125rem;
+}
+.page-type-name-finder-page button.arrow-button {
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  font-size: 4.5rem;
+  line-height: 1;
+  color: #65656a;
+  position: absolute;
+  bottom: 1.5rem;
+  outline: none;
+  -moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+@media (max-width: 479px) {
+  .page-type-name-finder-page button.arrow-button {
+    display: none;
+  }
+}
+.page-type-name-finder-page button.arrow-button#btn-click-to-left {
+  left: -1.875rem;
+}
+.page-type-name-finder-page button.arrow-button#btn-click-to-left:hover {
+  left: -2.1875rem;
+}
+.page-type-name-finder-page button.arrow-button#btn-click-to-right {
+  right: -1.875rem;
+}
+.page-type-name-finder-page button.arrow-button#btn-click-to-right:hover {
+  right: -2.1875rem;
 }
 
 /**

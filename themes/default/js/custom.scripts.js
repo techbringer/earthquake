@@ -345,6 +345,14 @@ function InitVision(canvas)
                             },
         upHandler     =     function(e)
                             {
+                                if (x < vision.outerWidth() * 0.5) {
+                                    x = vision.outerWidth() * 0.5;
+                                }
+
+                                if (x > street.width() - vision.outerWidth() * 0.5) {
+                                    x = street.width() - vision.outerWidth() * 0.5;
+                                }
+
                                 if (!canDrag) return;
                                 canDrag = false;
                             };
@@ -361,6 +369,25 @@ function InitVision(canvas)
     window.addEventListener('touchmove', dragHandler, false);
     window.addEventListener('mouseup', upHandler, false);
     window.addEventListener('touchend', upHandler, false);
+
+    $('.arrow-button').click(function(e)
+    {
+        e.preventDefault();
+        if ($(this).is('#btn-click-to-left')) {
+            x-= vision.outerWidth() * 0.5;
+        } else {
+            x+= vision.outerWidth() * 0.5;
+        }
+
+
+        var visionX =   x - vision.outerWidth() * 0.5,
+            r       =   (wall.width() - vision.outerWidth()) / (window.canvas_width - wall.width());
+        visionX = visionX >= 0 ? visionX : 0;
+        visionX = x + vision.outerWidth() * 0.5 <= street.width() ? visionX : street.width() - vision.outerWidth();
+        vision.css('transform', 'translateX(' + visionX + 'px)');
+        window.wallX = visionX / -r;
+        drawRect(canvas);
+    });
 }
 
 function drawRect(canvas)
