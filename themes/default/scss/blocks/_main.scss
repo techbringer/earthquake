@@ -32,7 +32,9 @@
             li {
                 list-style: none;
                 a {
+                    font-style: italic;
                     &.current {
+                        font-style: normal;
                         font-weight: bold;
                         color: #000;
                     }
