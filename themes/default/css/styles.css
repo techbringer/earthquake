@@ -2130,12 +2130,17 @@ h3 {
   line-height: 1;
   color: #65656a;
   position: absolute;
-  bottom: 1.5rem;
+  bottom: -0.4375rem;
   outline: none;
   -moz-transition: all 0.5s;
   -o-transition: all 0.5s;
   -webkit-transition: all 0.5s;
   transition: all 0.5s;
+}
+@media (max-width: 1919px) {
+  .page-type-name-finder-page button.arrow-button {
+    bottom: 1.5rem;
+  }
 }
 @media (max-width: 479px) {
   .page-type-name-finder-page button.arrow-button {

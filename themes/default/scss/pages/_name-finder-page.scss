@@ -141,7 +141,10 @@
         line-height: 1;
         color: #65656a;
         position: absolute;
-        bottom: rem(24);
+        bottom: rem(-7);
+        @include breakpoint($normal-screen) {
+            bottom: rem(24);
+        }
         outline: none;
         @include transition(all 0.5s);
         @include breakpoint($fablet) {
