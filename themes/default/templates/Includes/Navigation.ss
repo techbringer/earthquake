@@ -12,10 +12,6 @@
 				<% end_if %>
 			</li>
 		<% end_loop %>
-        <li class="expandable">
-            <a id="btn-language" href="#">Choose Language <span class="icon-down-open-mini"></span></a>
-        	<% include Translator %>
-        </li>
 	</ul>
     <button id="m-menu" class="icon-menu">Menu</button>
 </nav>

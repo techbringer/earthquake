@@ -16,10 +16,11 @@
 
 		<% include GA %>
 	</head>
-	<body class="page-$URLSegment<% if $isMobile %> mobile<% end_if %> page-type-$BodyClass.LowerCase">
+	<body class="page-$URLSegment<% if $isMobile %> mobile<% end_if %> page-type-$BodyClass.LowerCase<% if $Menu(2) %> has-secondary-menu<% end_if %>">
 		<% include Header %>
 
 		<main id="main">
+            <% include SecondaryMenu %>
             <h1 id="page-title" class="title container padding">$Title</h1>
             <% include ContentTop %>
 			$Layout

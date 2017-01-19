@@ -1,5 +1,11 @@
 #header {
     padding: rem(35) 0;
+    .has-secondary-menu & {
+        padding-bottom: rem(0);
+        @include breakpoint($fablet) {
+            padding-bottom: rem(10);
+        }
+    }
     @include breakpoint($normal-screen) {
         padding: rem(20) 0;
     }
@@ -8,6 +14,40 @@
     }
     position: relative;
     z-index: 2;
+
+    .container {
+        position: relative;
+        z-index: 1;
+        &.main-nav {
+            z-index: 2;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 rem(10);
+            .lang-wrapper {
+                height: auto;
+                a {
+                    padding: 0;                    
+                }
+
+                ul.children {
+                    height: auto;
+                    li {
+                        display: block;
+                        height: auto;
+                    }
+                }
+
+                @include breakpoint($fablet) {
+                    margin-bottom: rem(20);
+                    ul.children {
+                        height: 0;
+                        margin: 0;
+                    }
+                }
+            }
+        }
+    }
+
     #logo {
         display: block;
         text-transform: uppercase;
