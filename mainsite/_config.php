@@ -35,5 +35,5 @@ Translatable::set_allowed_locales(
 		'th_TH'
 	)
 );
-Object::add_extension('SiteTree', 'Translatable');
+Object::add_extension('Page', 'Translatable');
 Object::add_extension('SiteConfig', 'Translatable');
