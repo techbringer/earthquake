@@ -27,10 +27,12 @@ class EventsListPage extends Page
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
-        $fields->addFieldsToTab(
-            'Root.Events',
-            Grid::make('Events', 'Events', Event::get(), false)
-        );
+        if ($this->Events()->exitst()) {
+            $fields->addFieldsToTab(
+                'Root.Events',
+                Grid::make('Events', 'Events', $this->Events(), false)
+            );
+        }
         return $fields;
     }
 

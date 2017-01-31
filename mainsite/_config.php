@@ -36,4 +36,5 @@ Translatable::set_allowed_locales(
 	)
 );
 Object::add_extension('Page', 'Translatable');
+Object::add_extension('EventsListPage', 'Translatable');
 Object::add_extension('SiteConfig', 'Translatable');
