@@ -27,7 +27,7 @@ class EventsListPage extends Page
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
-        if ($this->Events()->exitst()) {
+        if ($this->Events()->exists()) {
             $fields->addFieldsToTab(
                 'Root.Events',
                 Grid::make('Events', 'Events', $this->Events(), false)
