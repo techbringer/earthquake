@@ -9,7 +9,8 @@ class ParallaxingBlock extends Block
      */
     private static $db = array(
         'Parallaxing'   =>  'Boolean',
-        'MinHeight'     =>  'Varchar(16)'
+        'MinHeight'     =>  'Varchar(16)',
+        'Proportional'  =>  'Boolean'
     );
     /**
      * Define the default values for all the $db fields
@@ -44,7 +45,11 @@ class ParallaxingBlock extends Block
                 TextField::create(
                     'MinHeight',
                     'Minimum height'
-                )
+                ),
+                CheckboxField::create(
+                    'Proportional',
+                    'Height proportionally adaptive'
+                )->setDescription('Make sure you turn off parallaxing option')
             )
         );
         return $fields;
@@ -55,9 +60,19 @@ class ParallaxingBlock extends Block
         $style = '';
         if (!empty($this->MinHeight) || !empty($this->ImageID)) {
             $style = ' style="';
-            if (!empty($this->MinHeight)) {
+            if (!empty($this->Proportional)) {
+                $proportion = 0;
+                if (!empty($this->ImageID)) {
+                    $width = $this->Image()->Width;
+                    $height = $this->Image()->Height;
+                    $r = $width < $height ? $width / $height : $height / $width;
+                    $proportion = number_format($r * 100, 2);
+                }
+                $style .= ('padding-top: ' . $proportion . '%; background-size: 100% auto; ');
+            } elseif (!empty($this->MinHeight)) {
                 $style .= ('min-height: ' . $this->MinHeight . '; ');
             }
+
             if (!empty($this->ImageID)) {
                 $url = $this->Image()->URL;
                 if ($this->Image()->Width > 3000) {
