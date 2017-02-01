@@ -2,6 +2,7 @@
 class CustomSiteConfig extends DataExtension {
 
 	public static $db = array(
+        'EnableMultiLanguage'   =>  'Boolean',
 		'GoogleSiteVerificationCode' => 'Varchar(128)',
 		'GoogleAnalyticsCode' => 'Varchar(20)',
 		'SiteVersion' => 'Varchar(10)',
@@ -14,6 +15,10 @@ class CustomSiteConfig extends DataExtension {
 		$fields->addFieldToTab("Root.Google", new TextareaField('GoogleCustomCode', 'Custom Google Code'));
 
 		$fields->addFieldToTab('Root.Main', new TextField('SiteVersion', 'Site Version'));
+        $fields->addFieldToTab('Root.Main', CheckboxField::create(
+            'EnableMultiLanguage',
+            'enable multi-language feature'
+        ));
 	}
 
 }
