@@ -1,10 +1,12 @@
 <header id="header">
+    <% if $SiteConfig.EnableMultiLanguage %>
     <div class="container main-nav as-flex right-aligned">
         <div class="li lang-wrapper">
             <a id="btn-language" href="#">Choose Language <span class="icon-down-open-mini"></span></a>
             <% include Translator %>
         </div>
     </div>
+    <% end_if %>
 	<div class="container padding">
 		<a href="$baseURL" id="logo" rel="start">
         <% if $SiteConfig.Title == 'Oi Manawa Canterbury earthquake national memorial' %>

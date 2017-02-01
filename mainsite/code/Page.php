@@ -212,4 +212,9 @@ Requirements::themedCSS('reset');
         return $this->getMyBlocks()->filter(array('PagePosition' => 'after-content'));
     }
 
+    public function MultiLanguageEnabled()
+    {
+        return SiteConfig::current_site_config()->EnableMultiLanguage;
+    }
+
 }
