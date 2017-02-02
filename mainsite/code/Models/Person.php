@@ -3,6 +3,7 @@ use SaltedHerring\Debugger;
 use SaltedHerring\Utilities;
 class Person extends DataObject
 {
+    public $bypassSlag      =   false;
     /**
      * Database fields
      * @var array
@@ -15,7 +16,8 @@ class Person extends DataObject
         'y'                 =>  'Int',
         'width'             =>  'Int',
         'height'            =>  'Int',
-        'inRow'             =>  'Int'
+        'inRow'             =>  'Int',
+        'PanelIndex'        =>  'Int'
     );
 
     /**
@@ -24,8 +26,9 @@ class Person extends DataObject
      * @var array
      */
     private static $summary_fields = array(
-        'English',
-        'EthnicScript'
+        'PanelIndex'        =>  'Panel index',
+        'English'           =>  'English',
+        'EthnicScript'      =>  'Ethnic script'
     );
 
     public function Title()
@@ -71,9 +74,9 @@ class Person extends DataObject
         if (empty($this->height)) {
             $this->height = 60;
         }
-        //if (empty($this->Slag)) {
+        if (empty($this->bypassSlag)) {
             $this->Slag = Utilities::SlagGen('Person', $this->Title, $this->ID);
-        //}
+        }
 
         if (!empty($this->inRow)) {
             switch ($this->inRow)

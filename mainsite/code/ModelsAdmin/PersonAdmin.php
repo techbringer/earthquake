@@ -13,7 +13,7 @@ class PersonAdmin extends ModelAdmin
 		$grid = $form->Fields()->fieldByName($this->sanitiseClassName($this->modelClass));
 		$grid->getConfig()
 			->removeComponentsByType('GridFieldPaginator')
-			->removeComponentsByType('GridFieldExportButton')
+			// ->removeComponentsByType('GridFieldExportButton')
 			->removeComponentsByType('GridFieldPrintButton')
 			->addComponents(
 				new GridFieldPaginatorWithShowAll(30)
