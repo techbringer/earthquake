@@ -8,15 +8,17 @@ window.theName = null;
 window.vision_sets = {
     unscaled:   {
                     canvas_width: 21000,
-                    canvas_height: 323,
+                    canvas_height: 343,
                     panel_width: 1000,
+                    panel_height: 323,
                     scale_factor: 1,
                     directory: '/themes/default/images/panels/'
                 },
     scaled:     {
                     canvas_width: 8400,
-                    canvas_height: 129,
+                    canvas_height: 149,
                     panel_width: 400,
+                    panel_height: 129,
                     scale_factor: 0.4,
                     directory: '/themes/default/images/resized/'
                 }
@@ -29,6 +31,7 @@ window.vision_sets = {
 window.canvas_width     =   window.vision_sets.scaled.canvas_width;
 window.canvas_height    =   window.vision_sets.scaled.canvas_height;
 window.panel_width      =   window.vision_sets.scaled.panel_width;
+window.panel_height     =   window.vision_sets.scaled.panel_height;
 window.scale_factor     =   window.vision_sets.scaled.scale_factor;
 window.dir              =   window.vision_sets.scaled.directory;
 
@@ -401,5 +404,11 @@ function drawRect(canvas)
         window.wall.graphics.rect(window.name_to_rect.x * window.scale_factor + window.wallX , window.name_to_rect.y * window.scale_factor, window.name_to_rect.width * window.scale_factor, window.name_to_rect.height * window.scale_factor);
         window.wall.graphics.stroke();
         window.wall.graphics.closePath();
+    }
+
+    window.wall.graphics.font="16px Lato";
+    for (var i = 0; i < 21; i++) {
+        var lblX = window.panel_width * 0.5 - 35 + window.panel_width * i + window.wallX;
+        window.wall.graphics.fillText('Panel ' + (i+1), lblX, window.panel_height + 20);
     }
 }
