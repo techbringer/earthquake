@@ -7,6 +7,14 @@ class Page extends SiteTree
 	// 	'UseTemplate'		=>	'Varchar(255)'
 	// );
 
+    /**
+     * Database fields
+     * @var array
+     */
+    private static $db = array(
+        'HideTitle'         =>  'Boolean'
+    );
+
     private static $extensions = array(
         'BlockinPage'
     );

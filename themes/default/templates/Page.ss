@@ -21,7 +21,7 @@
 
 		<main id="main">
             <% include SecondaryMenu %>
-            <h1 id="page-title" class="title container padding">$Title</h1>
+            <h1 id="page-title"<% if $HideTitle %> style="display: none;"<% end_if %> class="title container padding">$Title</h1>
             <% include ContentTop %>
 			$Layout
             <% include ContentBottom %>
