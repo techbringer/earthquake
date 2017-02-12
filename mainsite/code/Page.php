@@ -52,7 +52,11 @@ class Page extends SiteTree
                 'RedirectToID',
                 'Redirect to page',
                 Page::get()->sort(array('Title' => 'ASC'))->map('ID', 'Title')
-            )->setEmptyString('- no redirectoin -')
+            )->setEmptyString('- no redirectoin -'),
+            CheckboxField::create(
+                'HideTitle',
+                'Hide page title'
+            )
         );
 
         if (!empty($this->RedirectToID)) {
