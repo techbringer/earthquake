@@ -150,7 +150,7 @@ $(document).ready(function(e)
                 {
                     var li  =   $('<li />'),
                         a   =   $('<a />');
-                    a.addClass('the-name').attr('href', '/visit-us/names-on-the-memorial/?name=' + item.slag).css('text-transform', 'capitalize');
+                    a.addClass('the-name').attr('href', location.pathname + '?name=' + item.slag).css('text-transform', 'capitalize');
                     a.data('slag', item.slag);
                     a.data('x', item.rect.x);
                     a.data('y', item.rect.y);
@@ -158,7 +158,7 @@ $(document).ready(function(e)
                     a.data('height', item.rect.height);
                     a.html(item.title);
                     li.append(a).appendTo($('#found-names'));
-                    if (location.pathname == '/visit-us/names-on-the-memorial/' || location.pathname == '/visit-us/names-on-the-memorial') {
+                    if (location.pathname.indexOf('/names-on-the-memorial') >= 0) {
                         a.click(function(e)
                         {
                             e.preventDefault();
