@@ -46,16 +46,18 @@ class Page extends SiteTree
         if (!$fields->fieldByName('Options')) {
 			$fields->insertBefore(RightSidebar::create('Options'), 'Root');
 	    }
-        $fields->addFieldToTab(
+        $fields->addFieldsToTab(
             'Options',
-            DropdownField::create(
-                'RedirectToID',
-                'Redirect to page',
-                Page::get()->sort(array('Title' => 'ASC'))->map('ID', 'Title')
-            )->setEmptyString('- no redirectoin -'),
-            CheckboxField::create(
-                'HideTitle',
-                'Hide page title'
+            array(
+                DropdownField::create(
+                    'RedirectToID',
+                    'Redirect to page',
+                    Page::get()->sort(array('Title' => 'ASC'))->map('ID', 'Title')
+                )->setEmptyString('- no redirectoin -'),
+                CheckboxField::create(
+                    'HideTitle',
+                    'Hide page title'
+                )
             )
         );
 
