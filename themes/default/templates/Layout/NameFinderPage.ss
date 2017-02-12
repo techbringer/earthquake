@@ -6,7 +6,7 @@ window.name_to_rect = $NameRect;
 <% end_if %>
 <div class="container wall">
     <div class="as-flex right-aligned vertical-centred margin-bottom">
-        <div class="desc"><p>To see where the name of your loved one is on the Memorial Wall type their name into the search box above.</p></div>
+        <div class="desc">$Content</div>
         <% include NameSearcher %>
     </div>
     <div id="the-wall" style="margin-bottom: 20px;"></div>
@@ -22,5 +22,4 @@ window.name_to_rect = $NameRect;
             <a class="the-name" style="margin: 0 0.5em;" href="$Top.Link?name={$Slag}" data-id="$ID" data-slag="$Slag" data-x="$x" data-y="$y" data-width="$width" data-height="$height">$Title</a>
         <% end_loop %>
     </div> --%>
-    $Content
 </div>
