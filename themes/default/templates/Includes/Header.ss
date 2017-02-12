@@ -8,7 +8,7 @@
     </div>
     <% end_if %>
 	<div class="container padding">
-		<a href="$baseURL" id="logo" rel="start">
+		<a href="$getHome($ContentLocale)" id="logo" rel="start">
         <% if $SiteConfig.Title == 'Oi Manawa Canterbury earthquake national memorial' %>
             Oi Manawa <br />Canterbury earthquake national memorial
         <% else %>

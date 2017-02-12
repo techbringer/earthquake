@@ -217,4 +217,16 @@ Requirements::themedCSS('reset');
         return SiteConfig::current_site_config()->EnableMultiLanguage;
     }
 
+    public function getHome($locale)
+    {
+        $locale = str_replace('-', '_', $locale);
+        if ($home = HomePage::get()->first()) {
+            if ($page = $home->getTranslation($locale)) {
+                $link = $page->Link();
+                return !empty($link) ? $link : '/';
+            }
+        }
+        return '/';
+    }
+
 }
