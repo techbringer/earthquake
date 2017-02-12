@@ -43,6 +43,24 @@ window.addEventListener('popstate', function(e)
 
 $(document).ready(function(e)
 {
+    var phone_breakpoint = 479;
+    if ($('.image.full-height').length > 0) {
+        $(window).resize(function(e)
+        {
+            if ($(window).width() <= phone_breakpoint) {
+                $('.image.full-height').each(function(i, el)
+                {
+                    $(this).css('padding-top', $(this).data('padding-top'));
+                });
+            } else {
+                $('.image.full-height').each(function(i, el)
+                {
+                    $(this).css('padding-top', '');
+                });
+            }
+        }).resize();
+    }
+
     $('#m-menu').click(function(e)
     {
         e.preventDefault();

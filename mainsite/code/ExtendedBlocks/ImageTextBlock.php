@@ -9,7 +9,8 @@ class ImageTextBlock extends Block
      */
     private static $db = array(
         'Content'           =>  'HTMLText',
-        'ColumnLayout'      =>  'Varchar(16)'
+        'ColumnLayout'      =>  'Varchar(16)',
+        'ImageFullHeight'   =>  'Boolean'
     );
 
     /**
@@ -47,5 +48,18 @@ class ImageTextBlock extends Block
             )->setEmptyString('- select one -')
         );
         return $fields;
+    }
+
+    public function getPaddingTop()
+    {
+        $proportion = 0;
+        if (!empty($this->ImageID)) {
+            $width = $this->Image()->Width;
+            $height = $this->Image()->Height;
+            $r = $width < $height ? $height / $width : $width / $height;
+            $proportion = number_format($r * 100, 2);
+        }
+
+        return $proportion . '%';
     }
 }
