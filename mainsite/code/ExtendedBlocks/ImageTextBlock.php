@@ -9,6 +9,7 @@ class ImageTextBlock extends Block
      */
     private static $db = array(
         'Content'           =>  'HTMLText',
+        'ExtraContent'      =>  'HTMLText',
         'ColumnLayout'      =>  'Varchar(16)',
         'SplitContent'      =>  'Boolean',
         'ImageFullHeight'   =>  'Boolean'
