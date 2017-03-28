@@ -134,6 +134,20 @@
             @include breakpoint($fablet) {
                 padding: rem(20) rem(10);
             }
+
+            &.split {
+                padding: rem(50) rem(60) rem(60);
+
+                .block-content {
+                    @include column-count(2);
+                    @include column-gap(40px);
+                    @include breakpoint($traditional_container) {
+                        @include column-count(1);
+                        @include column-gap(0);
+                    }
+
+                }
+            }
         }
 
         &.image-right {

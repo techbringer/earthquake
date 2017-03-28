@@ -1,5 +1,5 @@
 <div class="as-flex wrap">
-    <div class="text">
+    <div class="text<% if $SplitContent %> split<% end_if %>">
         <h2 class="block-title">$Title</h2>
         <div class="block-content">$Content</div>
     </div>

@@ -10,6 +10,7 @@ class ImageTextBlock extends Block
     private static $db = array(
         'Content'           =>  'HTMLText',
         'ColumnLayout'      =>  'Varchar(16)',
+        'SplitContent'      =>  'Boolean',
         'ImageFullHeight'   =>  'Boolean'
     );
 
@@ -36,16 +37,22 @@ class ImageTextBlock extends Block
     public function getCMSFields()
     {
         $fields = parent::getCMSFields();
-        $fields->addFieldToTab(
+        $fields->addFieldsToTab(
             'Options',
-            DropdownField::create(
-                'ColumnLayout',
-                'Layout',
-                array(
-                    'image-left'    =>  'Image left',
-                    'image-right'   =>  'Image right'
+            array(
+                DropdownField::create(
+                    'ColumnLayout',
+                    'Layout',
+                    array(
+                        'image-left'    =>  'Image left',
+                        'image-right'   =>  'Image right'
+                    )
+                )->setEmptyString('- select one -'),
+                CheckboxField::create(
+                    'SplitContent',
+                    'Split content text in 2 columns'
                 )
-            )->setEmptyString('- select one -')
+            )
         );
         return $fields;
     }

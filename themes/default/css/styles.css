@@ -1360,6 +1360,27 @@ textarea {
     padding: 1.25rem 0.625rem;
   }
 }
+.block.block-image-text-block .text.split {
+  padding: 3.125rem 3.75rem 3.75rem;
+}
+.block.block-image-text-block .text.split .block-content {
+  -moz-column-count: 2;
+  -webkit-column-count: 2;
+  column-count: 2;
+  -moz-column-gap: 40px;
+  -webkit-column-gap: 40px;
+  column-gap: 40px;
+}
+@media (max-width: 959px) {
+  .block.block-image-text-block .text.split .block-content {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
+    -moz-column-gap: 0;
+    -webkit-column-gap: 0;
+    column-gap: 0;
+  }
+}
 .block.block-image-text-block.image-right .text {
   padding: 3.125rem 3.75rem 3.75rem 20%;
 }
