@@ -1346,6 +1346,7 @@ textarea {
 }
 .block.block-image-text-block .image.full-height {
   padding-top: 100%;
+  height: auto;
 }
 .block.block-image-text-block .text {
   padding: 3.125rem 20% 3.75rem 3.75rem;
