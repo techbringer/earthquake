@@ -35,7 +35,9 @@ class Person extends DataObject
     public function Title()
     {
         $english = str_replace('née', '<span class="force-lower">née</span>', $this->English);
-        $english = str_replace(' de ', ' <span class="force-lower">d</span>e ', $english);
+        if (empty(trim($this->EthnicScript))) {
+            $english = str_replace(' de ', ' <span class="force-lower">d</span>e ', $english);
+        }
         return $english . (!empty($this->EthnicScript) ? (' <span class="non-english' . ($this->RightToLeft ? ' rtl' : '') . '">' . $this->EthnicScript . '</span>'): '');
     }
 
