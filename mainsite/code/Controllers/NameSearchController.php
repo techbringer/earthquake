@@ -9,7 +9,7 @@ class NameSearchController extends Page_Controller
     {
         if ($request->isAjax() && $request->isPost()) {
             $search = $request->postVar('search');
-            
+            $search = ltrim($search, ' ');
             if(strlen($search) != mb_strlen($search, 'utf-8')) {
                 $utf = $this->to_utf($search);
                 $utf = str_replace('&#', '_', $utf);
@@ -18,17 +18,34 @@ class NameSearchController extends Page_Controller
                 $key = '_' . str_replace('-', '_', Utilities::sanitise($search));
             }
 
-            if ($result = SaltedCache::read('Person', $key)) {
-                $result = $result->limit(5);
-                return json_encode($result->format());
-            }
+            if (substr( strtolower($search), 0, 3 ) === "dr.") {
+                $key = 'dr_' . $key;
+                if ($result = SaltedCache::read('Person', $key)) {
+                    $result = $result->limit(5);
+                    return json_encode($result->format());
+                }
 
-            $result = Person::get()->filterAny(
-                array(
-                    'English:PartialMatch'       =>  $search,
-                    'EthnicScript:PartialMatch'  =>  $search
-                )
-            );
+                $result = Person::get()->filterAny(
+                    array(
+                        'English:StartsWith'       =>  $search,
+                        'EthnicScript:StartsWith'  =>  $search
+                    )
+                );
+
+            } else {
+                
+                if ($result = SaltedCache::read('Person', $key)) {
+                    $result = $result->limit(5);
+                    return json_encode($result->format());
+                }
+
+                $result = Person::get()->filterAny(
+                    array(
+                        'English:PartialMatch'       =>  $search,
+                        'EthnicScript:PartialMatch'  =>  $search
+                    )
+                );
+            }
 
             //Debugger::inspect($result->first());
             SaltedCache::save('Person', $key, $result);
