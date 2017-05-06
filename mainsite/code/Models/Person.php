@@ -17,7 +17,8 @@ class Person extends DataObject
         'width'             =>  'Int',
         'height'            =>  'Int',
         'inRow'             =>  'Int',
-        'PanelIndex'        =>  'Int'
+        'PanelIndex'        =>  'Int',
+        'RightToLeft'       =>  'Boolean'
     );
 
     /**
@@ -34,7 +35,8 @@ class Person extends DataObject
     public function Title()
     {
         $english = str_replace('née', '<span class="force-lower">née</span>', $this->English);
-        return $english . (!empty($this->EthnicScript) ? (' <span class="non-english">' . $this->EthnicScript . '</span>'): '');
+        $english = str_replace(' de ', ' <span class="force-lower">d</span>e ', $english);
+        return $english . (!empty($this->EthnicScript) ? (' <span class="non-english' . ($this->RightToLeft ? ' rtl' : '') . '">' . $this->EthnicScript . '</span>'): '');
     }
 
     public function getTitle()
@@ -75,7 +77,7 @@ class Person extends DataObject
             $this->height = 60;
         }
         if (empty($this->bypassSlag)) {
-            $this->Slag = Utilities::SlagGen('Person', $this->Title, $this->ID);
+            //$this->Slag = Utilities::SlagGen('Person', $this->Title, $this->ID);
         }
 
         if (!empty($this->inRow)) {

@@ -571,6 +571,10 @@
   float: right;
 }
 
+.rtl {
+  direction: rtl !important;
+}
+
 /**
  * Group content - i.e. clearfix (group seems a better fit semantically).
  * */
